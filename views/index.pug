@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  #leftPane
+    h1= title
+    p Enter a subject:
+    #input
+      input#inputText(type='text')
+      button#inputButton(type='button') Draw
+  #rightPane
+    #svgContainer
+
+  #screenContainer
+    a#githubLink(href='https://github.com/tuannguy/DrawOnDemand' target='_blank')
+      | Code and usage guide are on GitHub
+
+  #loaderScreen
+    #loader
+      .spinner
+      p Getting image
+
+  script(src='/javascripts/index.js')
