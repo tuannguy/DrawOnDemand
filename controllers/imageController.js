@@ -3,13 +3,15 @@ const cheerio = require('cheerio');
 const fsp = require('fs/promises');
 const fs = require('fs');
 const sharp = require('sharp');
+const os = require("os");
 const ImageTracer = require('../imagetracer_v1.2.6');
 
-const drawingFilePath = 'public/images/drawing.jpg';
-const croppedDrawingFilePath = 'public/images/drawing-cropped.jpg';
-const trimmedDrawingFilePath = 'public/images/drawing-trimmed.jpg';
-const paddedDrawingFilePath = 'public/images/drawing-padded.jpg';   //for the pencil
-const svgFilePath = 'public/images/drawing.svg';
+const tempDir = os.tmpdir();
+const drawingFilePath = `${tempDir}/drawing.jpg`;
+const croppedDrawingFilePath = `${tempDir}/drawing-cropped.jpg`;
+const trimmedDrawingFilePath = `${tempDir}/drawing-trimmed.jpg`;
+const paddedDrawingFilePath = `${tempDir}/drawing-padded.jpg`;   //so the pencil won't get cut off
+const svgFilePath = `${tempDir}/drawing.svg`;
 
 
 async function imagetoSvg() {
