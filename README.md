@@ -9,7 +9,7 @@ Usage
 
 ### Web demo
 
-#### Live: <draw-on-demand.vercel.app/>
+#### Live: <https://draw-on-demand.vercel.app/>
 
 https://user-images.githubusercontent.com/43122789/176959259-83e724cd-f411-4eaa-9e9b-68b7a9deae4f.mp4
 
