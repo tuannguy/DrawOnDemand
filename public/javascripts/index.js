@@ -60,7 +60,7 @@ async function drawIt(subject) {
       let darkColoredStroke = true;
 
       for (rbgParam of rbgParams) {
-          if (parseInt(rbgParam) > 120) {
+          if (parseInt(rbgParam) > 140) {
             darkColoredStroke = false;
             break;
           }
