@@ -9,7 +9,7 @@ inputButton.addEventListener("click", () => {;
 
 function sanitizeInput(input) {
 
-  let invalidCharacters =  input.match(/[^a-zA-Z\s]/g);
+  let invalidCharacters =  input.match(/[^a-zA-Z\s-]/g);
   if (invalidCharacters && invalidCharacters.length > 0) {
     alert(`Input has these invalid characters: ${invalidCharacters}`);
     loaderScreen.style.display = 'none';
@@ -53,8 +53,20 @@ async function drawIt(subject) {
     while (pathIndex <= document.getElementsByTagName('path').length) {
 
       let path = document.querySelector(`path:nth-child(${pathIndex})`);
+      
+      let stroke = path.attributes['stroke'].value;
+      let rbgParamString = stroke.match(/(?<=\().+(?=\))/)[0]; // string between parentheses
+      let rbgParams = rbgParamString.split(',');
+      let darkColoredStroke = true;
 
-      if (!path.attributes['stroke'].value.match(/\d{3},\d{3},\d{3}/)) { //dark-colored stroke
+      for (rbgParam of rbgParams) {
+          if (parseInt(rbgParam) > 120) {
+            darkColoredStroke = false;
+            break;
+          }
+      }
+
+      if (darkColoredStroke) {
 
         let pathD = path.attributes['d'].value;
         let prevPath = path;

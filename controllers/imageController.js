@@ -17,6 +17,7 @@ const svgFilePath = `${tempDir}/drawing.svg`;
 async function imagetoSvg() {
     
     let svgContents;
+    let svgScale = 0.4;
 
     sharp.cache({ files : 0 });
     let image = sharp(drawingFilePath);
@@ -35,12 +36,13 @@ async function imagetoSvg() {
         .toFile(trimmedDrawingFilePath);
 
     let pencilHeight = 100; // also in index.js
+    let pencilHeightScaled = pencilHeight / svgScale;
     await sharp(trimmedDrawingFilePath)
         .extend({
-            top: pencilHeight,
-            bottom: pencilHeight,
-            left: pencilHeight,
-            right: pencilHeight,
+            top: pencilHeightScaled,
+            bottom: pencilHeightScaled,
+            left: pencilHeightScaled,
+            right: pencilHeightScaled,
             background: 'white'
         })
         .toFile(paddedDrawingFilePath);
@@ -58,7 +60,7 @@ async function imagetoSvg() {
     var myImageData = { width:metadata.width, height:metadata.height, data:buffer };
     
     // tracing to SVG string
-    var options = { scale: 0.5 }; // options object; option preset string can be used also
+    var options = { scale: svgScale }; // options object; option preset string can be used also
     
     var svgstring = ImageTracer.imagedataToSVG( myImageData, options );
     
