@@ -105,7 +105,7 @@ async function drawIt(subject) {
     let pencil = document.createElementNS('http://www.w3.org/2000/svg', 'image');
     pencil.id = 'pencil';
     pencil.setAttribute('href', '../images/pencil.svg');
-    let penHeight = '100';
+    let penHeight = '80';
     pencil.setAttribute('height', penHeight);
     document.getElementsByTagName('svg')[0].appendChild(pencil);
     

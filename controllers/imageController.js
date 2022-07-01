@@ -17,7 +17,7 @@ const svgFilePath = `${tempDir}/drawing.svg`;
 async function imagetoSvg() {
     
     let svgContents;
-    let svgScale = 0.4;
+    let svgScale = 0.5;
 
     sharp.cache({ files : 0 });
     let image = sharp(drawingFilePath);
@@ -35,7 +35,7 @@ async function imagetoSvg() {
         .trim()
         .toFile(trimmedDrawingFilePath);
 
-    let pencilHeight = 100; // also in index.js
+    let pencilHeight = 80; // from index.js
     let pencilHeightScaled = pencilHeight / svgScale;
     await sharp(trimmedDrawingFilePath)
         .extend({
