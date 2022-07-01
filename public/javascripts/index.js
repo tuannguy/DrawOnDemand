@@ -59,7 +59,7 @@ async function drawIt(subject) {
       let rbgParams = rbgParamString.split(',');
       let darkColoredStroke = true;
 
-      for (rbgParam of rbgParams) {
+      for (let rbgParam of rbgParams) {
           if (parseInt(rbgParam) > 140) {
             darkColoredStroke = false;
             break;
@@ -79,7 +79,7 @@ async function drawIt(subject) {
                 newPath.setAttribute('d', match);
                 let pathLength = newPath.getTotalLength();
                 if (pathLength > 10) {  // ignore tiny lines
-                  for (atributeIndex = 0; atributeIndex < path.attributes.length - 1; atributeIndex++) {
+                  for (let atributeIndex = 0; atributeIndex < path.attributes.length - 1; atributeIndex++) {
                     let attributeValue;
                     if (path.attributes[atributeIndex].name == 'fill') {
                       attributeValue = 'transparent';
